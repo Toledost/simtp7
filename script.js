@@ -24,10 +24,10 @@ function intervaloBondis(){
 }
 
 function calcularDemora(){ 
-    var demora = "no demora"; // cambiar a false 
+    var demora = "No demora"; // cambiar a false 
     var rnd = Math.random();
     if(rnd < 0.3){
-        demora = "si demora";
+        demora = "Sí demora";
     }
     return demora;
 }
@@ -36,7 +36,7 @@ function calcularFinDemoraViaje(){
     var finDemoraViaje = intervaloBondis();
     var demora = calcularDemora()
     var minutosDemora = 5;
-    if(demora == "si demora"){
+    if(demora == "Sí demora"){
         finDemoraViaje += minutosDemora;
     }
     return finDemoraViaje;
@@ -100,11 +100,11 @@ function generarBondis(cantEventos, desde, hasta){
         var proximoBondi = intervaloEntreBondis + reloj;
 
         //para finDemoraViaje
-        if(tieneDemora == "si demora"){ // para agregarle los 5 min si es qeu demora
+        if(tieneDemora == "Sí demora"){ // para agregarle los 5 min si es qeu demora
             finDemoraViaje = proximoBondi + 5;
             
         }
-        if(tieneDemora == "no demora"){
+        if(tieneDemora == "No demora"){
             finDemoraViaje = proximoBondi;
         }
 
@@ -149,7 +149,7 @@ function rellenarTabla() {
     var desde = obtenerInputs()[1];
     var hasta = obtenerInputs()[2];
 
-    tablaColas.innerHTML = "<tr><th>Reloj</th><th>Intervalo entre bondis</th><th>Llegada // prox bondi</th><th>Tiene demora</th><th>Fin demora viaje</th><th>Sale</th><th>Tiempo de espera</th><th>AC tiempo de espera </th><th>Acumulador de bondis</th></tr>";
+    tablaColas.innerHTML = "<tr><th>Reloj</th><th>Intervalo entre colectivos</th><th>Próximo colectivo</th><th>Tiene demora</th><th>Fin demora viaje</th><th>Sale</th><th>Tiempo de espera</th><th>AC tiempo de espera </th><th>Acumulador de colectivos</th></tr>";
     var grilla;
     grilla = generarBondis(cantEventos,desde,hasta);
     for(var i=0; i<grilla.length; i++) {
