@@ -54,7 +54,7 @@ function calcularDesperfecto(){ // si el bondi sale o no sale
 
 
 function generarBondis(cantEventos, desde, hasta){
-
+    
     var filaTabla = [ new Array(9).fill(0), new Array(9).fill(0)];
     var grillaFinal = []; 
     var horaLlegada = 0; // de la persona
@@ -130,13 +130,16 @@ function generarBondis(cantEventos, desde, hasta){
         
     }
 
-    if (cantEventos == 0){
-        resultado = "faltan cantidad de eventos a simular";
+    resultado = Number((acTiempoEspera/acBondis).toFixed(2)); 
+    if (cantEventos == 0 || acTiempoEspera == 0){
+        var resultado = "faltan cantidad de eventos a simular";
         document.getElementById("resultado").style.fontSize = "15px";
     }
-
-    var resultado = (acTiempoEspera/acBondis).toFixed(2); 
+    else{
+        document.getElementById("resultado").style.fontSize = "30px";
+    }
     document.getElementById("resultado").innerHTML = resultado;
+    console.log(resultado);
 
     //console.log(grillaFinal); 
     
@@ -149,7 +152,7 @@ function rellenarTabla() {
     var cantEventos = obtenerInputs()[0];
     var desde = obtenerInputs()[1];
     var hasta = obtenerInputs()[2];
-
+    
     tablaColas.innerHTML = "<tr><th>Reloj</th><th>Intervalo entre colectivos</th><th>Próximo colectivo</th><th>Tiene demora</th><th>Fin demora viaje</th><th>Sale</th><th>Tiempo de espera</th><th>AC tiempo de espera </th><th>Acumulador de colectivos</th></tr>";
     var grilla;
     grilla = generarBondis(cantEventos,desde,hasta);
@@ -179,6 +182,7 @@ function rellenarTabla() {
 function main() {
     rellenarTabla();
     tablaColas.style.display = "block";
+    document.getElementById("tiempoEspera").style.display = "block";
 }
 
 document.getElementById("btnAceptar").addEventListener('click', () => {
