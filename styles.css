@@ -90,17 +90,24 @@ body {
     background: #51bcda;
     text-align: center;
     border-collapse: collapse;
+    
 
 }
 
 td, th {
     border: 1px solid #0c0c0c;
     padding: 8px;
+    
+    
+    
 }
 th {
     background: rgb(142, 68, 173);
     color: black;
     font-weight: bold;
+    
+    
+    
 }
 
 .metrica {
