@@ -1,9 +1,21 @@
 body {
     margin: 0 20px;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #131313;
-    color: white;
+    font-family: 'fantasy', sans-serif;
+    background-color: #a3a3a346;
+    color: rgb(10, 10, 10);
+    font-weight: bold;
+
+}
+
+#tiempoEspera{
+    text-align: center;
+    font-size: 25px;
+}
+
+#resultado{
+    font-size: 30px;
+    
 
 }
 
@@ -27,6 +39,7 @@ body {
     font-size: 20px;
 }
 
+/*
 #selector {
     background: rgb(22, 88, 143);
     font-size: 15px;
@@ -36,6 +49,7 @@ body {
     border-radius: 5px;
     color: white;
 }
+*/
 
 #politica{
     display: none;
@@ -49,8 +63,8 @@ body {
     font-size: 20px;
     background-image: linear-gradient(
     225deg,
-    #26caf8, 
-    #27d86c);
+    #5bc9e7, 
+    #e126ee);
     border-radius: 30px;
     width: 150px;
     letter-spacing: 2px;
@@ -63,18 +77,19 @@ body {
     box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.5), -10px 10px 25px 0 rgba(39, 200, 255, 0.5);
     background-image: linear-gradient(
         225deg,
-        #c625d0,
-        #26caf8);
+        #e126ee,
+        #51bcda);
     transition: 0.3s;
 }
 
 #tablaColas { 
-    font-family:'Poppins', sans-serif;
+    font-family:'fantasy', sans-serif;
     width: 65%;
     margin: 100px auto;
-    background: rgb(93, 109, 126);
+    background: #51bcda;
     text-align: center;
     border-collapse: collapse;
+
 }
 
 td, th {
@@ -82,13 +97,13 @@ td, th {
     padding: 8px;
 }
 th {
-    background: rgb(22, 88, 143);
+    background: rgb(142, 68, 173);
     color: black;
     font-weight: bold;
 }
 
 .metrica {
-    background: #27d86c;
+    background: #51bcda;
     color: black;
     font-weight: bold;
 }

@@ -55,7 +55,7 @@ function calcularDesperfecto(){ // si el bondi sale o no sale
 
 function generarBondis(cantEventos, desde, hasta){
 
-    var filaTabla = [ new Array(24).fill(0), new Array(24).fill(0)];
+    var filaTabla = [ new Array(9).fill(0), new Array(9).fill(0)];
     var grillaFinal = []; 
     var horaLlegada = 0; // de la persona
 
@@ -82,14 +82,13 @@ function generarBondis(cantEventos, desde, hasta){
             var reloj = i;
         }
         if (proximoBondi <= finDemoraViaje){ // cambio a la llegada de algun bondi ( o sea cuando pasa por el Bv)
-            // falta que haga el cambio de fin viaje para que lo ponga en reloj
             reloj = finDemoraViaje;
         }
+
         if (sale == "no sale"){
             reloj = proximoBondi - intervaloEntreBondis;
             tiempoEspera = 0;
-            //intervaloEntreBondis += filaTabla[0][1];
-            //console.log(reloj, tiempoEspera);
+
         }
         if (sale == "sale"){
             var acBondis = acBondis + 1;
@@ -108,9 +107,6 @@ function generarBondis(cantEventos, desde, hasta){
             finDemoraViaje = proximoBondi;
         }
 
-
-        
-        
         
         //para ver si sale o no sale 
         var sale = calcularDesperfecto();
@@ -119,25 +115,30 @@ function generarBondis(cantEventos, desde, hasta){
         //var minutoSubida = finDemoraViaje; // agregar la condicion si hay bondi en camino 
         acTiempoEspera += tiempoEspera;
         
-        
-        
-        
+ 
 
         filaTabla.splice(0, 1);
         var insertarRegistro = [reloj,intervaloEntreBondis,proximoBondi,tieneDemora,finDemoraViaje,sale,tiempoEspera,acTiempoEspera,acBondis];
         
-        console.log(acTiempoEspera,acBondis);
-        var resultado = acTiempoEspera/acBondis;
-        document.getElementById("resultado").innerHTML = resultado;
+
 
         filaTabla.push(insertarRegistro);
     
         if((i >= desde && i <= hasta) || i == cantEventos) {
             grillaFinal.push(insertarRegistro);
         }
+        
     }
-    
-    console.log(grillaFinal); 
+
+    if (cantEventos == 0){
+        resultado = "faltan cantidad de eventos a simular";
+        document.getElementById("resultado").style.fontSize = "15px";
+    }
+
+    var resultado = (acTiempoEspera/acBondis).toFixed(2); 
+    document.getElementById("resultado").innerHTML = resultado;
+
+    //console.log(grillaFinal); 
     
     return grillaFinal;
 }
@@ -163,14 +164,12 @@ function rellenarTabla() {
             cadena += '<td class="metrica">' + grilla[i][6] + '</td>';
             cadena += '<td class="metrica">' + grilla[i][7] + '</td>';
             cadena += '<td class="metrica">' + grilla[i][8] + '</td></tr>';
-            //cadena += '<td class="metrica">' + grilla[i][9] + '</td></tr>';
         } else {
             cadena += '<td>' + grilla[i][6] + '</td>';
             cadena += '<td>' + grilla[i][7] + '</td>';
             cadena += '<td>' + grilla[i][8] + '</td></tr>';
-            //cadena += '<td>' + grilla[i][9] + '</td></tr>';
         }
-
+    
         tablaColas.innerHTML += cadena;
     }
 
@@ -185,4 +184,3 @@ function main() {
 document.getElementById("btnAceptar").addEventListener('click', () => {
     main();
 })
-
